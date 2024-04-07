@@ -6,7 +6,9 @@ from pages.main_page import MainPage
 from pages.personal_page import PersonalPage
 from pages.header_page import HeaderPage
 from pages.forgot_pass_page import ForgotPassPage
+from pages.reset_pass_page import ResetPassPage
 from locators.login_page_locators import LoginPageLocators
+from user_data import UserData
 
 
 @pytest.fixture(scope='function')
@@ -19,14 +21,9 @@ def driver():
 
 @pytest.fixture(scope="function")
 def login(driver, header_page, login_page):
-    USER_LOGIN_DATA = {
-        'email': 'kirill_belov_666@yandex.ru',
-        'password': 'yandexPractikumRulit'
-    }
-
     header_page.click_to_personal_account()
-    login_page.fill_in_field(LoginPageLocators.email_input_locator, USER_LOGIN_DATA['email'])
-    login_page.fill_in_field(LoginPageLocators.pass_input_locator, USER_LOGIN_DATA['password'])
+    login_page.fill_in_field(LoginPageLocators.email_input_locator, UserData.email)
+    login_page.fill_in_field(LoginPageLocators.pass_input_locator, UserData.password)
     login_page.click_to_login_button()
 
 
@@ -53,3 +50,8 @@ def login_page(driver):
 @pytest.fixture(scope="function")
 def forgot_pass_page(driver):
     return ForgotPassPage(driver)
+
+
+@pytest.fixture(scope="function")
+def reset_pass_page(driver):
+    return ResetPassPage(driver)

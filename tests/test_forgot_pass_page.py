@@ -1,10 +1,13 @@
-from locators.forgot_pass_page_locators import ForgotPassPageLocators
+from locators.reset_pass_locators import ResetPassPageLocators
+from user_data import UserData
 from urls import Urls
 
 
 class TestForgotPassPage:
-    def test_open_restore_pass_page_true(self, header_page, login_page, forgot_pass_page):
+    def test_fill_email_and_click_to_restore_button_true(self, header_page, login_page, forgot_pass_page,
+                                                         reset_pass_page):
         header_page.click_to_personal_account()
         login_page.click_to_restore_pass_button()
-        assert forgot_pass_page.wait_for_element(
-            ForgotPassPageLocators.restore_button_locator) and forgot_pass_page.get_url() == Urls.forgot_pass_url
+        forgot_pass_page.fill_and_to_click_o_restore_button(UserData.email)
+        assert reset_pass_page.wait_for_element(
+            ResetPassPageLocators.save_button_locator) and reset_pass_page.get_url() == Urls.reset_pass_url

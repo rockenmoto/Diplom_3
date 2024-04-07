@@ -3,3 +3,4 @@ class Urls:
     login_url = base_url + 'login'
     order_history_url = base_url + 'account/order-history'
     forgot_pass_url = base_url + 'forgot-password'
+    reset_pass_url = base_url + 'reset-password'
