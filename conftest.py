@@ -5,6 +5,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.personal_page import PersonalPage
 from pages.header_page import HeaderPage
+from pages.forgot_pass_page import ForgotPassPage
 from locators.login_page_locators import LoginPageLocators
 
 
@@ -47,3 +48,8 @@ def personal_page(driver):
 @pytest.fixture(scope="function")
 def login_page(driver):
     return LoginPage(driver)
+
+
+@pytest.fixture(scope="function")
+def forgot_pass_page(driver):
+    return ForgotPassPage(driver)
