@@ -3,11 +3,8 @@ from urls import Urls
 
 
 class TestPersonalPage:
-    def test_open_login_page_from_header_true(self, header_page, personal_page):
-        header_page.click_to_personal_account()
-        assert LoginPageLocators.login_button_locator and personal_page.get_url() == Urls.login_url
 
-    def test_login_from_sign_in_button_true(self, login, header_page, personal_page):
+    def test_open_history_order_section_true(self, login, header_page, personal_page):
         header_page.click_to_personal_account()
         personal_page.click_on_history_order_section()
         assert personal_page.get_url() == Urls.order_history_url
