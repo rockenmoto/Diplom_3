@@ -1,6 +1,7 @@
 from locators.reset_pass_locators import ResetPassPageLocators
 from user_data import UserData
 from urls import Urls
+import allure
 
 
 class TestForgotPassPage:

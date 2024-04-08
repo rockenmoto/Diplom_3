@@ -20,7 +20,7 @@ def driver():
 
 
 @pytest.fixture(scope="function")
-def login(driver, header_page, login_page):
+def login(header_page, login_page):
     header_page.click_to_personal_account()
     login_page.fill_in_field(LoginPageLocators.email_input_locator, UserData.email)
     login_page.fill_in_field(LoginPageLocators.pass_input_locator, UserData.password)

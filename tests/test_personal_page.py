@@ -3,7 +3,6 @@ from urls import Urls
 
 
 class TestPersonalPage:
-
     def test_open_history_order_section_true(self, login, header_page, personal_page):
         header_page.click_to_personal_account()
         personal_page.click_on_history_order_section()
