@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import NoSuchElementException
 import allure
 
 
@@ -40,3 +41,11 @@ class BasePage:
     @allure.step('Получаем атрибут локатара для класса')
     def get_class_attribute(self, locator):
         return self.driver.find_element(By.XPATH, locator).get_attribute('class')
+
+    @allure.step('Проверка наличия элемента')
+    def find_element(self, locator):
+        try:
+            self.driver.find_element(*locator)
+        except NoSuchElementException:
+            return False
+        return True
