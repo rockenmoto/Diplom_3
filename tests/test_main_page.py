@@ -14,3 +14,7 @@ class TestMainPage:
         main_page.wait_for_element(MainPageLocators.modal_window_locator)
         main_page.close_modal_window()
         assert not main_page.find_element(MainPageLocators.modal_window_locator)
+
+    def test_adding_ingredient_for_order(self, main_page):
+        main_page.adding_ingredient_for_order()
+        assert main_page.get_text_element(MainPageLocators.bun_counter_locator) == '2'
