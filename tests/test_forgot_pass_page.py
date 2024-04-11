@@ -5,8 +5,8 @@ import allure
 
 
 class TestForgotPassPage:
-    def test_fill_email_and_click_to_restore_button_true(self, header_page, login_page, forgot_pass_page,
-                                                         reset_pass_page):
+    def test_fill_email_and_click_to_restore_button_true(self, header_page, login_page,
+                                                         forgot_pass_page, reset_pass_page):
         header_page.click_to_personal_account()
         login_page.click_to_restore_pass_button()
         forgot_pass_page.fill_and_to_click_o_restore_button(UserData.email)
