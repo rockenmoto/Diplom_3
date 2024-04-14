@@ -1,6 +1,7 @@
 from locators.forgot_pass_page_locators import ForgotPassPageLocators
 from locators.login_page_locators import LoginPageLocators
 from urls import Urls
+import allure
 
 
 class TestLoginPage:

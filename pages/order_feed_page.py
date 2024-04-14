@@ -45,7 +45,7 @@ class OrderFeedPage(BasePage):
     @allure.step('Ожидаем появления ордера в блоке "В работе"')
     def wait_order_in_work(self):
         if self.get_text_element(OrderFeedPageLocators.in_work_locator) == 'Все текущие заказы готовы!':
-            time.sleep(5)
+            time.sleep(10)
             return self.get_text_element(OrderFeedPageLocators.in_work_locator)
         else:
             return self.get_text_element(OrderFeedPageLocators.in_work_locator)

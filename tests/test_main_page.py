@@ -1,5 +1,4 @@
 import allure
-
 from locators.main_page_locators import MainPageLocators
 from user import User
 

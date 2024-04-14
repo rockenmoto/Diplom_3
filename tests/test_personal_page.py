@@ -1,6 +1,7 @@
 from locators.login_page_locators import LoginPageLocators
 from urls import Urls
 from user import User
+import allure
 
 
 class TestPersonalPage:
