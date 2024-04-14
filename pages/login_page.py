@@ -1,12 +1,11 @@
-from pages.base_page import BasePage
-from pages.header_page import HeaderPage
-from locators.login_page_locators import LoginPageLocators
 import allure
 
-from user_data import UserData
+from locators.login_page_locators import LoginPageLocators
+from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
+    @allure.step('Выполнение логирования с почтой и паролем')
     def login(self, email, password):
         self.fill_in_field(LoginPageLocators.email_input_locator, email)
         self.fill_in_field(LoginPageLocators.pass_input_locator, password)

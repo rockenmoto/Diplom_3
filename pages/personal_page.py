@@ -12,5 +12,6 @@ class PersonalPage(BasePage):
     def click_to_logout_button(self):
         self.click_on_element(PersonalPageLocators.logout_button_locator)
 
+    @allure.step('Получение номера заказа')
     def get_order_id(self):
         return self.get_text_element(PersonalPageLocators.last_cell_order_id_locator)
