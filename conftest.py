@@ -7,6 +7,7 @@ from pages.personal_page import PersonalPage
 from pages.header_page import HeaderPage
 from pages.forgot_pass_page import ForgotPassPage
 from pages.reset_pass_page import ResetPassPage
+from pages.order_feed_page import OrderFeedPage
 from locators.login_page_locators import LoginPageLocators
 from user_data import UserData
 
@@ -55,3 +56,13 @@ def forgot_pass_page(driver):
 @pytest.fixture(scope="function")
 def reset_pass_page(driver):
     return ResetPassPage(driver)
+
+
+@pytest.fixture(scope="function")
+def order_feed_page(driver):
+    return OrderFeedPage(driver)
+
+@pytest.fixture(scope="function")
+def ordering_burger(driver):
+
+    return OrderFeedPage(driver)

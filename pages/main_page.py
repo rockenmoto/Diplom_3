@@ -7,6 +7,7 @@ class MainPage(BasePage):
         self.click_on_element(MainPageLocators.bun_locator)
 
     def close_modal_window(self):
+        self.wait_for_element(MainPageLocators.close_modal_window_button).is_displayed()
         self.click_on_element(MainPageLocators.close_modal_window_button)
 
     def adding_ingredient_for_order(self):
