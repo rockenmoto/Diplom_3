@@ -21,13 +21,19 @@ class TestOrderFeedPage:
         last_order_id_two = order_feed_page.get_order_id()
         assert last_order_id == last_order_id_two
 
-    def test_counter_completed_increases(self, login, header_page, main_page, order_feed_page):
+    def test_all_time_counter_completed_increases(self, login, header_page, main_page, order_feed_page):
         header_page.click_on_element(HeaderPageLocators.order_feed_locator)
-        before_sum = order_feed_page.get_text_element(OrderFeedPageLocators.order_feed_all_time_number_locator)
+        before_alltime_counter = order_feed_page.get_text_element(
+            OrderFeedPageLocators.order_feed_all_time_number_locator)
+        before_today_counter = order_feed_page.get_text_element(
+            OrderFeedPageLocators.order_feed_today_number_locator)
         header_page.click_on_element(HeaderPageLocators.main_logo)
         main_page.adding_ingredient_for_order()
         main_page.click_on_element(MainPageLocators.place_order_button_locator)
         main_page.close_modal_window()
         header_page.click_on_element(HeaderPageLocators.order_feed_locator)
-        after_sum = order_feed_page.get_text_element(OrderFeedPageLocators.order_feed_all_time_number_locator)
-        assert after_sum > before_sum
+        after_all_time_counter = order_feed_page.get_text_element(
+            OrderFeedPageLocators.order_feed_all_time_number_locator)
+        after_today_counter = order_feed_page.get_text_element(
+            OrderFeedPageLocators.order_feed_today_number_locator)
+        assert after_all_time_counter > before_alltime_counter and after_today_counter > before_today_counter
