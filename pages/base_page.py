@@ -18,7 +18,7 @@ class BasePage:
 
     @allure.step('Ожидаем элемент')
     def wait_for_element(self, locator):
-        WebDriverWait(self.driver, 100).until(ec.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, 200).until(ec.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     @allure.step('Получаем текст элемента')

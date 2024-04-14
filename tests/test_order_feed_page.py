@@ -36,4 +36,7 @@ class TestOrderFeedPage:
             OrderFeedPageLocators.order_feed_all_time_number_locator)
         after_today_counter = order_feed_page.get_text_element(
             OrderFeedPageLocators.order_feed_today_number_locator)
-        assert after_all_time_counter > before_alltime_counter and after_today_counter > before_today_counter
+
+        in_work_order = order_feed_page.get_text_element(OrderFeedPageLocators.in_work_locator)
+        assert (after_all_time_counter > before_alltime_counter and after_today_counter > before_today_counter
+                and after_all_time_counter in in_work_order)

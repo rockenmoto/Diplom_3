@@ -9,3 +9,4 @@ class OrderFeedPageLocators:
     last_order_id_locator = [By.XPATH, ".//ul[contains(@class,'OrderFeed_list__OLh59')]/li[1]/a/div[1]/p[1]"]
     order_feed_all_time_number_locator = [By.XPATH, ".//div[contains(@class,'1L6Iv')]/div[2]/p[2]"]
     order_feed_today_number_locator = [By.XPATH, ".//div[contains(@class,'1L6Iv')]/div[3]/p[2]"]
+    in_work_locator = [By.XPATH, ".//ul[contains(@class,'orderListReady__1YFem')]/li"]
