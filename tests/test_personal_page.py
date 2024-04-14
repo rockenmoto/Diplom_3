@@ -11,6 +11,7 @@ class TestPersonalPage:
     def setup_method(cls):
         cls.user_data = cls.user.create_new_user()
 
+    @allure.title('Проверка переход в раздел «История заказов»')
     def test_open_history_order_section_true(self, header_page, personal_page, login_page):
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
@@ -18,6 +19,7 @@ class TestPersonalPage:
         personal_page.click_on_history_order_section()
         assert personal_page.get_url() == Urls.order_history_url
 
+    @allure.title('Проверка выход из аккаунта')
     def test_logout_true(self, header_page, personal_page, login_page):
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
