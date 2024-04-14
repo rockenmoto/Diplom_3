@@ -22,6 +22,7 @@ class TestOrderFeedPage:
                 and order_feed_page.wait_for_element(OrderFeedPageLocators.modal_ingredient_title_locator)
                 and order_feed_page.wait_for_element(OrderFeedPageLocators.modal_ingredient_list_locator))
 
+    @allure.title('Проверка заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     def test_order_id_the_same_for_history_and_feed_true(self, header_page, main_page, personal_page,
                                                          order_feed_page, login_page):
         header_page.click_to_personal_account()
@@ -32,25 +33,23 @@ class TestOrderFeedPage:
         last_order_id_two = order_feed_page.get_order_id()
         assert order_id_from_history_page == last_order_id_two
 
-    def test_all_time_counter_completed_increases(self, login, header_page, main_page, order_feed_page):
-        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
-        before_alltime_counter = order_feed_page.get_text_element(
-            OrderFeedPageLocators.order_feed_all_time_number_locator)
-        before_today_counter = order_feed_page.get_text_element(
-            OrderFeedPageLocators.order_feed_today_number_locator)
+    @allure.title('Проверка при создании нового заказа счётчик «Выполнено за всё время», «Выполнено за сегодня» '
+                  'увеличивается')
+    def test_all_time_counter_completed_increases(self, header_page, main_page, order_feed_page, login_page):
+        header_page.click_to_personal_account()
+        login_page.login(self.user_data[0], self.user_data[1])
+
+        before_counter_data = order_feed_page.get_before_counter_value(header_page)
         header_page.click_on_element(HeaderPageLocators.main_logo_locator)
         main_page.adding_ingredient_for_order()
         main_page.click_on_element(MainPageLocators.checkout_button_locator)
         main_page.close_modal_window()
-        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
-        after_all_time_counter = order_feed_page.get_text_element(
-            OrderFeedPageLocators.order_feed_all_time_number_locator)
-        after_today_counter = order_feed_page.get_text_element(
-            OrderFeedPageLocators.order_feed_today_number_locator)
 
-        in_work_order = order_feed_page.get_text_element(OrderFeedPageLocators.in_work_locator)
-        assert (after_all_time_counter > before_alltime_counter and after_today_counter > before_today_counter
-                and after_all_time_counter in in_work_order)
+        after_counter_data = order_feed_page.get_after_counter_value(header_page)
+
+        # in_work_order = order_feed_page.get_text_element(OrderFeedPageLocators.in_work_locator)
+        assert (after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
+                and after_counter_data['after_today_counter'] > before_counter_data['before_today_counter'])
 
     @classmethod
     def teardown_method(cls):

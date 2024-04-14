@@ -1,5 +1,6 @@
 import allure
 
+from locators.header_page_locators import HeaderPageLocators
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 from locators.order_feed_page_locators import OrderFeedPageLocators
@@ -18,3 +19,23 @@ class OrderFeedPage(BasePage):
         header_page.click_to_personal_account()
         personal_page.click_on_history_order_section()
         return personal_page.get_order_id()
+
+    @allure.step('Получение значение до создания заказа')
+    def get_before_counter_value(self, header_page):
+        before_counter_data = {}
+        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
+        before_counter_data['before_alltime_counter'] = self.get_text_element(
+            OrderFeedPageLocators.order_feed_all_time_number_locator)
+        before_counter_data['before_today_counter'] = self.get_text_element(
+            OrderFeedPageLocators.order_feed_today_number_locator)
+        return before_counter_data
+
+    @allure.step('Получение значение после создания заказа')
+    def get_after_counter_value(self, header_page):
+        after_counter_data = {}
+        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
+        after_counter_data['after_alltime_counter'] = self.get_text_element(
+            OrderFeedPageLocators.order_feed_all_time_number_locator)
+        after_counter_data['after_today_counter'] = self.get_text_element(
+            OrderFeedPageLocators.order_feed_today_number_locator)
+        return after_counter_data
