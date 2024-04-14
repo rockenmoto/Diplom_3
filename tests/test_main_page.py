@@ -31,7 +31,7 @@ class TestMainPage:
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
         main_page.click_on_element(MainPageLocators.place_order_button_locator)
-        assert (main_page.wait_for_element(MainPageLocators.order_modal_window)
+        assert (main_page.wait_for_element(MainPageLocators.order_modal_window_locator)
                 and main_page.wait_for_element(MainPageLocators.order_being_prepared_text_locator))
 
     @classmethod

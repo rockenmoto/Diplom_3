@@ -27,7 +27,7 @@ class TestOrderFeedPage:
             OrderFeedPageLocators.order_feed_all_time_number_locator)
         before_today_counter = order_feed_page.get_text_element(
             OrderFeedPageLocators.order_feed_today_number_locator)
-        header_page.click_on_element(HeaderPageLocators.main_logo)
+        header_page.click_on_element(HeaderPageLocators.main_logo_locator)
         main_page.adding_ingredient_for_order()
         main_page.click_on_element(MainPageLocators.place_order_button_locator)
         main_page.close_modal_window()

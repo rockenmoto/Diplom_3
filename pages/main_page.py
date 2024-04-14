@@ -7,8 +7,8 @@ class MainPage(BasePage):
         self.click_on_element(MainPageLocators.bun_locator)
 
     def close_modal_window(self):
-        self.wait_for_element(MainPageLocators.close_modal_window_button).is_enabled()
-        self.click_on_element(MainPageLocators.close_modal_window_button)
+        self.wait_for_element(MainPageLocators.close_modal_window_button_locator).is_enabled()
+        self.click_on_element(MainPageLocators.close_modal_window_button_locator)
 
     def adding_ingredient_for_order(self):
         self.move_element(MainPageLocators.bun_locator, MainPageLocators.buns_constructor_locator)

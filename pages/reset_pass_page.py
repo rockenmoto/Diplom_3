@@ -6,9 +6,9 @@ import allure
 class ResetPassPage(BasePage):
     @allure.step('Клик по иконке "Глаз"')
     def click_to_show_pass_field(self):
-        self.click_on_element(ResetPassPageLocators.eye_icon)
+        self.click_on_element(ResetPassPageLocators.eye_icon_locator)
         pass_field_active = True
-        pass_field = self.get_class_attribute(ResetPassPageLocators.pass_input)
+        pass_field = self.get_class_attribute(ResetPassPageLocators.pass_input_locator)
 
         if 'input_status_active' not in pass_field:
             pass_field_active = False
