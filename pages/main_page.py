@@ -17,3 +17,7 @@ class MainPage(BasePage):
     @allure.step('Добавление ингредиента для заказа')
     def adding_ingredient_for_order(self):
         self.move_element(MainPageLocators.bun_locator, MainPageLocators.buns_constructor_locator)
+
+    @allure.step('Клик на кнопку "Оформить заказ"')
+    def click_to_checkout_button(self):
+        self.click_on_element(MainPageLocators.checkout_button_locator)

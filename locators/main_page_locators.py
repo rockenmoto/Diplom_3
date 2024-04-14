@@ -10,7 +10,7 @@ class MainPageLocators:
     total_sum_locator = [By.XPATH, ".//div[contains(@class,'totalContainer')]/p"]
     close_modal_window_button_locator = [By.XPATH, ".//section[contains(@class,'Modal_modal_opened')]/div[1]/button"]
 
-    place_order_button_locator = [By.XPATH, './/button[text()="Оформить заказ"]']
+    checkout_button_locator = [By.XPATH, './/button[text()="Оформить заказ"]']
     order_modal_window_locator = [By.XPATH, ".//div[contains(@class,'Modal_modal__container')]"]
     order_being_prepared_text_locator = [By.XPATH, ".//p[text()='Ваш заказ начали готовить']"]
 

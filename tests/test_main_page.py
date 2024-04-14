@@ -36,7 +36,7 @@ class TestMainPage:
     def test_ordering_with_auth_user(self, header_page, main_page, login_page):
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
-        main_page.click_on_element(MainPageLocators.place_order_button_locator)
+        main_page.click_to_checkout_button()
         assert (main_page.wait_for_element(MainPageLocators.order_modal_window_locator)
                 and main_page.wait_for_element(MainPageLocators.order_being_prepared_text_locator))
 
