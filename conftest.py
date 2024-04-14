@@ -8,8 +8,6 @@ from pages.header_page import HeaderPage
 from pages.forgot_pass_page import ForgotPassPage
 from pages.reset_pass_page import ResetPassPage
 from pages.order_feed_page import OrderFeedPage
-from locators.login_page_locators import LoginPageLocators
-from user_data import UserData
 
 
 @pytest.fixture(scope='function')
