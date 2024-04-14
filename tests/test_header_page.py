@@ -5,7 +5,7 @@ from locators.main_page_locators import MainPageLocators
 
 
 class TestHeaderPage:
-    @allure.title('Проверка переходов по клику на «Личный кабинет» и «Историю заказов»')
+    @allure.title('Проверка переходов по клику на «Конструктор» и «Историю заказов»')
     @pytest.mark.parametrize("section_locator, expected_result",
                              [(HeaderPageLocators.order_feed_locator, MainPageLocators.order_feed_title_locator),
                               (HeaderPageLocators.constructor_locator, MainPageLocators.constructor_title_locator)

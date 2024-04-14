@@ -12,7 +12,7 @@ class TestForgotPassPage:
     def setup_class(cls):
         cls.user_data = cls.user.create_new_user()
 
-    @allure.title('Проверка перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
+    @allure.title('Проверка ввод почты и клик по кнопке «Восстановить»')
     def test_fill_email_and_click_to_restore_button_true(self, header_page, login_page,
                                                          forgot_pass_page, reset_pass_page):
         header_page.click_to_personal_account()

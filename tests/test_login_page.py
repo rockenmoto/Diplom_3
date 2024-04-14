@@ -4,10 +4,12 @@ from urls import Urls
 
 
 class TestLoginPage:
+    @allure.title('Проверка перехода по клику на «Личный кабинет»')
     def test_open_login_page_from_header_true(self, header_page, personal_page):
         header_page.click_to_personal_account()
         assert LoginPageLocators.login_button_locator and personal_page.get_url() == Urls.login_url
 
+    @allure.title('Проверка перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
     def test_open_forgot_pass_page_true(self, header_page, login_page, forgot_pass_page):
         header_page.click_to_personal_account()
         login_page.click_to_restore_pass_button()
