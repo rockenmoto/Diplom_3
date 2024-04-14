@@ -35,7 +35,7 @@ class TestOrderFeedPage:
 
     @allure.title('Проверка при создании нового заказа счётчик «Выполнено за всё время», «Выполнено за сегодня» '
                   'увеличивается')
-    def test_all_time_counter_completed_increases(self, header_page, main_page, order_feed_page, login_page):
+    def test_all_time_counter_completed_increases_true(self, header_page, main_page, order_feed_page, login_page):
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
 
@@ -50,6 +50,20 @@ class TestOrderFeedPage:
         # in_work_order = order_feed_page.get_text_element(OrderFeedPageLocators.in_work_locator)
         assert (after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
                 and after_counter_data['after_today_counter'] > before_counter_data['before_today_counter'])
+
+    @allure.title('Проверка после оформления заказа его номер появляется в разделе В работе')
+    def test_order_id_shows_in_in_work_true(self, header_page, main_page, order_feed_page, login_page):
+        header_page.click_to_personal_account()
+        login_page.login(self.user_data[0], self.user_data[1])
+
+        header_page.click_on_element(HeaderPageLocators.main_logo_locator)
+        main_page.adding_ingredient_for_order()
+        main_page.click_on_element(MainPageLocators.checkout_button_locator)
+        main_page.close_modal_window()
+
+        after_counter_data = order_feed_page.get_after_counter_value(header_page)
+        in_work_order_id = order_feed_page.wait_order_in_work()
+        assert after_counter_data['after_alltime_counter'] in in_work_order_id
 
     @classmethod
     def teardown_method(cls):

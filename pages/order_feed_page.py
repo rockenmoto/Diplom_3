@@ -1,9 +1,11 @@
+import time
+
 import allure
 
 from locators.header_page_locators import HeaderPageLocators
 from locators.main_page_locators import MainPageLocators
-from pages.base_page import BasePage
 from locators.order_feed_page_locators import OrderFeedPageLocators
+from pages.base_page import BasePage
 
 
 class OrderFeedPage(BasePage):
@@ -39,3 +41,11 @@ class OrderFeedPage(BasePage):
         after_counter_data['after_today_counter'] = self.get_text_element(
             OrderFeedPageLocators.order_feed_today_number_locator)
         return after_counter_data
+
+    @allure.step('Ожидаем появления ордера в блоке "В работе"')
+    def wait_order_in_work(self):
+        if self.get_text_element(OrderFeedPageLocators.in_work_locator) == 'Все текущие заказы готовы!':
+            time.sleep(5)
+            return self.get_text_element(OrderFeedPageLocators.in_work_locator)
+        else:
+            return self.get_text_element(OrderFeedPageLocators.in_work_locator)
