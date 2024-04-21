@@ -68,8 +68,8 @@ class TestOrderFeedPage:
         main_page.close_modal_window()
 
         after_counter_data = order_feed_page.get_after_counter_value(header_page)
-        assert (after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
-                and after_counter_data['after_today_counter'] > before_counter_data['before_today_counter'])
+        assert after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
+        assert after_counter_data['after_today_counter'] > before_counter_data['before_today_counter']
 
     @allure.title('Проверка после оформления заказа его номер появляется в разделе В работе')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
