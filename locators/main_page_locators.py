@@ -5,7 +5,6 @@ class MainPageLocators:
     bun_locator = [By.XPATH, ".//p[text()='Флюоресцентная булка R2-D3']"]
     bun_counter_locator = [By.XPATH, ".//p[contains(text(), 'D3')]/ancestor::a//p[contains(@class, '3nue1')]"]
     modal_window_locator = [By.XPATH, ".//section[contains(@class,'Modal_modal_opened')]"]
-    detail_title_in_modal_window_locator = [By.XPATH, './/h2[text()="Детали ингредиента"]']
     detail_info_modal_window_locator = [By.CLASS_NAME, "Modal_modal__statsList__6cEm5"]
     total_sum_locator = [By.XPATH, ".//div[contains(@class,'totalContainer')]/p"]
     close_modal_window_button_locator = [By.XPATH, ".//section[contains(@class,'opened')]//button"]

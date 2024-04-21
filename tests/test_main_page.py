@@ -1,7 +1,6 @@
 import allure
 import pytest
 
-from locators.main_page_locators import MainPageLocators
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -23,9 +22,8 @@ class TestMainPage:
         main_page = MainPage(driver)
 
         main_page.click_to_ingredient()
-        assert ((main_page.wait_for_element(MainPageLocators.modal_window_locator)
-                 and main_page.wait_for_element(MainPageLocators.detail_title_in_modal_window_locator))
-                and main_page.wait_for_element(MainPageLocators.detail_info_modal_window_locator))
+        assert main_page.ingredient_modal_window_is_displayed()
+        assert main_page.ingredient_detail_block_is_displayed()
 
     @allure.title('Проверка закрытия всплывающего окна кликом по крестику')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
@@ -34,9 +32,8 @@ class TestMainPage:
         main_page = MainPage(driver)
 
         main_page.click_to_ingredient()
-        main_page.wait_for_element(MainPageLocators.modal_window_locator)
         main_page.close_modal_window()
-        assert not main_page.find_element(MainPageLocators.modal_window_locator)
+        assert not main_page.ingredient_modal_window_is_closed()
 
     @allure.title('Проверка увеличения счетчика при добавлении ингредиента в заказ')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
@@ -45,8 +42,8 @@ class TestMainPage:
         main_page = MainPage(driver)
 
         main_page.adding_ingredient_for_order()
-        assert (main_page.get_text_element(MainPageLocators.bun_counter_locator) == '2'
-                and main_page.get_text_element(MainPageLocators.total_sum_locator) == '1976')
+        assert main_page.get_value_ingredient_counter() == '2'
+        assert main_page.get_total_sum_order() == '1976'
 
     @allure.title('Проверка залогиненный пользователь может оформить заказ')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
@@ -59,8 +56,8 @@ class TestMainPage:
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
         main_page.click_to_checkout_button()
-        assert (main_page.wait_for_element(MainPageLocators.order_modal_window_locator)
-                and main_page.wait_for_element(MainPageLocators.order_being_prepared_text_locator))
+        assert main_page.order_modal_window_is_displayed()
+        assert main_page.get_starting_order_text() == 'Ваш заказ начали готовить'
 
     @classmethod
     def teardown_class(cls):

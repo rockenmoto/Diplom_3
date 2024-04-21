@@ -21,3 +21,31 @@ class MainPage(BasePage):
     @allure.step('Клик на кнопку "Оформить заказ"')
     def click_to_checkout_button(self):
         self.click_on_element(MainPageLocators.checkout_button_locator)
+
+    @allure.step('Открылось модальное окно ингредиента')
+    def ingredient_modal_window_is_displayed(self):
+        return self.wait_for_element(MainPageLocators.modal_window_locator).is_displayed()
+
+    @allure.step('Закрылось модальное окно ингредиента')
+    def ingredient_modal_window_is_closed(self):
+        return self.find_element(MainPageLocators.modal_window_locator)
+
+    @allure.step('Открылось модальное окно заказа')
+    def order_modal_window_is_displayed(self):
+        return self.wait_for_element(MainPageLocators.order_modal_window_locator).is_displayed()
+
+    @allure.step('Отображается блок с деталями ингредиента')
+    def ingredient_detail_block_is_displayed(self):
+        return self.wait_for_element(MainPageLocators.detail_info_modal_window_locator).is_displayed()
+
+    @allure.step('Получить текст "Ваш заказ начали готовить"')
+    def get_starting_order_text(self):
+        return self.get_text_element(MainPageLocators.order_being_prepared_text_locator)
+
+    @allure.step('Получить значение счетчика ингредиента')
+    def get_value_ingredient_counter(self):
+        return self.get_text_element(MainPageLocators.bun_counter_locator)
+
+    @allure.step('Получить значение счетчика ингредиента')
+    def get_total_sum_order(self):
+        return self.get_text_element(MainPageLocators.total_sum_locator)
