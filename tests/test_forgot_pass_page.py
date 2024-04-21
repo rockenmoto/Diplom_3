@@ -1,10 +1,9 @@
 import allure
 import pytest
 
-from locators.reset_pass_locators import ResetPassPageLocators
+from pages.forgot_pass_page import ForgotPassPage
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage
-from pages.forgot_pass_page import ForgotPassPage
 from pages.reset_pass_page import ResetPassPage
 from urls import Urls
 from user import User
@@ -30,8 +29,8 @@ class TestForgotPassPage:
         header_page.click_to_personal_account()
         login_page.click_to_restore_pass_button()
         forgot_pass_page.fill_and_to_click_o_restore_button(self.user_data[0])
-        assert reset_pass_page.wait_for_element(
-            ResetPassPageLocators.save_button_locator) and reset_pass_page.get_url() == Urls.reset_pass_url
+        assert reset_pass_page.get_save_button_text() == 'Сохранить'
+        assert reset_pass_page.get_url() == Urls.reset_pass_url
 
     @classmethod
     def teardown_class(cls):

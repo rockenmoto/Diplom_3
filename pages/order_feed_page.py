@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from locators.header_page_locators import HeaderPageLocators

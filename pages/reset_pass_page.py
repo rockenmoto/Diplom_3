@@ -13,3 +13,7 @@ class ResetPassPage(BasePage):
         if 'input_status_active' not in pass_field:
             pass_field_active = False
         return pass_field_active
+
+    @allure.step('Получаем название кнопки "Сохранить"')
+    def get_save_button_text(self):
+        return self.get_text_element(ResetPassPageLocators.save_button_locator)
