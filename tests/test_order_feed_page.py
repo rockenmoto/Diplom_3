@@ -92,7 +92,7 @@ class TestOrderFeedPage:
         main_page.close_modal_window()
 
         after_counter_data = order_feed_page.get_after_counter_value(header_page)
-        in_work_order_id = order_feed_page.wait_order_in_work()
+        in_work_order_id = order_feed_page.wait_order_in_work(after_counter_data['after_alltime_counter'])
         assert after_counter_data['after_alltime_counter'] in in_work_order_id
 
     @classmethod
