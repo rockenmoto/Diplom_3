@@ -1,7 +1,6 @@
 import allure
 import pytest
 
-from locators.header_page_locators import HeaderPageLocators
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -44,7 +43,7 @@ class TestOrderFeedPage:
         login_page.login(self.user_data[0], self.user_data[1])
         order_id_from_history_page = order_feed_page.get_order_id_from_history_order_page(main_page, personal_page,
                                                                                           header_page)
-        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
+        header_page.click_to_order_feed()
         last_order_id_two = order_feed_page.get_order_id()
         assert order_id_from_history_page == last_order_id_two
 
