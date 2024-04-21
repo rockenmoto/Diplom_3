@@ -18,3 +18,7 @@ class LoginPage(BasePage):
     @allure.step('Клик по кнопке "Восстановить"')
     def click_to_restore_pass_button(self):
         self.click_on_element(LoginPageLocators.restore_pass_link_locator)
+
+    @allure.step('Получаем название кнопки "Войти"')
+    def get_login_button_text(self):
+        return self.get_text_element(LoginPageLocators.login_button_locator)
