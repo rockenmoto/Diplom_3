@@ -1,8 +1,6 @@
-import pytest
-from selenium.webdriver.common.by import By
 import allure
+import pytest
 
-from locators.reset_pass_locators import ResetPassPageLocators
 from pages.forgot_pass_page import ForgotPassPage
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage

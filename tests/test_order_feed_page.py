@@ -71,8 +71,6 @@ class TestOrderFeedPage:
         main_page.close_modal_window()
 
         after_counter_data = order_feed_page.get_after_counter_value(header_page)
-
-        # in_work_order = order_feed_page.get_text_element(OrderFeedPageLocators.in_work_locator)
         assert (after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
                 and after_counter_data['after_today_counter'] > before_counter_data['before_today_counter'])
 
