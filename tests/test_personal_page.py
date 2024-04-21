@@ -1,12 +1,11 @@
+import allure
 import pytest
 
-from locators.login_page_locators import LoginPageLocators
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage
 from pages.personal_page import PersonalPage
 from urls import Urls
 from user import User
-import allure
 
 
 class TestPersonalPage:
@@ -43,8 +42,8 @@ class TestPersonalPage:
         login_page.login(self.user_data[0], self.user_data[1])
         header_page.click_to_personal_account()
         personal_page.click_to_logout_button()
-        assert (personal_page.wait_for_element(LoginPageLocators.login_button_locator)
-                and personal_page.get_url() == Urls.login_url)
+        assert login_page.get_login_button_text() == 'Войти'
+        assert login_page.get_url() == Urls.login_url
 
     @classmethod
     def teardown_method(cls):
