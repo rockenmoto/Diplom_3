@@ -1,8 +1,6 @@
 import allure
 import pytest
 
-from locators.main_page_locators import MainPageLocators
-from locators.order_feed_page_locators import OrderFeedPageLocators
 from locators.header_page_locators import HeaderPageLocators
 from pages.header_page import HeaderPage
 from pages.login_page import LoginPage
@@ -27,11 +25,10 @@ class TestOrderFeedPage:
         header_page = HeaderPage(driver)
         order_feed_page = OrderFeedPage(driver)
 
-        header_page.click_on_element(HeaderPageLocators.order_feed_locator)
-        order_feed_page.click_on_element(OrderFeedPageLocators.order_list_locator)
-        assert (order_feed_page.wait_for_element(OrderFeedPageLocators.modal_window_locator)
-                and order_feed_page.wait_for_element(OrderFeedPageLocators.modal_ingredient_title_locator)
-                and order_feed_page.wait_for_element(OrderFeedPageLocators.modal_ingredient_list_locator))
+        header_page.click_to_order_feed()
+        order_feed_page.click_to_cell_order()
+        assert order_feed_page.order_modal_window_is_displayed()
+        assert order_feed_page.order_detail_block_is_displayed()
 
     @allure.title('Проверка заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
@@ -65,9 +62,9 @@ class TestOrderFeedPage:
         login_page.login(self.user_data[0], self.user_data[1])
 
         before_counter_data = order_feed_page.get_before_counter_value(header_page)
-        header_page.click_on_element(HeaderPageLocators.main_logo_locator)
+        header_page.click_to_main_logo()
         main_page.adding_ingredient_for_order()
-        main_page.click_on_element(MainPageLocators.checkout_button_locator)
+        main_page.click_to_checkout_button()
         main_page.close_modal_window()
 
         after_counter_data = order_feed_page.get_after_counter_value(header_page)
@@ -86,9 +83,9 @@ class TestOrderFeedPage:
         header_page.click_to_personal_account()
         login_page.login(self.user_data[0], self.user_data[1])
 
-        header_page.click_on_element(HeaderPageLocators.main_logo_locator)
+        header_page.click_to_main_logo()
         main_page.adding_ingredient_for_order()
-        main_page.click_on_element(MainPageLocators.checkout_button_locator)
+        main_page.click_to_checkout_button()
         main_page.close_modal_window()
 
         after_counter_data = order_feed_page.get_after_counter_value(header_page)

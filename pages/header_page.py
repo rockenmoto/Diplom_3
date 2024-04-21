@@ -15,3 +15,7 @@ class HeaderPage(BasePage):
     @allure.step('Клик на "Конструктор"')
     def click_to_constructor(self):
         self.click_on_element(HeaderPageLocators.constructor_locator)
+
+    @allure.step('Клик на основное лого "Stellar Burgers"')
+    def click_to_main_logo(self):
+        self.click_on_element(HeaderPageLocators.main_logo_locator)

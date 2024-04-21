@@ -47,3 +47,15 @@ class OrderFeedPage(BasePage):
             return self.get_text_element(OrderFeedPageLocators.in_work_locator)
         else:
             return self.get_text_element(OrderFeedPageLocators.in_work_locator)
+
+    @allure.step('Клик на ячейку с заказом')
+    def click_to_cell_order(self):
+        self.click_on_element(OrderFeedPageLocators.order_list_locator)
+
+    @allure.step('Открылось модальное окно заказа')
+    def order_modal_window_is_displayed(self):
+        return self.wait_for_element(OrderFeedPageLocators.modal_window_locator).is_displayed()
+
+    @allure.step('Отображается блок с составом заказа')
+    def order_detail_block_is_displayed(self):
+        return self.wait_for_element(OrderFeedPageLocators.modal_ingredient_list_locator).is_displayed()
