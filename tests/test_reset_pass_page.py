@@ -8,7 +8,7 @@ from pages.reset_pass_page import ResetPassPage
 
 
 class TestResetPassPage:
-    @allure.title('Проверка клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его')
+    @allure.title('Verification clicking on the show/hide password button makes the field active - highlights it')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_show_pass_field_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)

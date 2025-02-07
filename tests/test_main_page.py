@@ -15,7 +15,7 @@ class TestMainPage:
     def setup_class(cls):
         cls.user_data = cls.user.create_new_user()
 
-    @allure.title('Проверка появления всплывающего окна с деталями при клике на Ингредиент')
+    @allure.title('Checking if the details popup appears when clicking on an Ingredient')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_click_to_ingredient(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -25,7 +25,7 @@ class TestMainPage:
         assert main_page.ingredient_modal_window_is_displayed()
         assert main_page.ingredient_detail_block_is_displayed()
 
-    @allure.title('Проверка закрытия всплывающего окна кликом по крестику')
+    @allure.title('Checking if a popup window is closed by clicking on the cross')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_close_ingredient_modal_window(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -35,7 +35,7 @@ class TestMainPage:
         main_page.close_modal_window()
         assert not main_page.ingredient_modal_window_is_closed()
 
-    @allure.title('Проверка увеличения счетчика при добавлении ингредиента в заказ')
+    @allure.title('Checking the counter increase when adding an ingredient to an order')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_adding_ingredient_for_order(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -45,7 +45,7 @@ class TestMainPage:
         assert main_page.get_value_ingredient_counter() == '2'
         assert main_page.get_total_sum_order() == '1976'
 
-    @allure.title('Проверка залогиненный пользователь может оформить заказ')
+    @allure.title('Verification logged in user can place an order')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_ordering_with_auth_user(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)

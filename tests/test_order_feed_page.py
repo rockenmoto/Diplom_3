@@ -17,7 +17,7 @@ class TestOrderFeedPage:
     def setup_method(cls):
         cls.user_data = cls.user.create_new_user()
 
-    @allure.title('Проверка открытия всплывающего окна с деталями при клике на заказ')
+    @allure.title('Checking if a pop-up window with details opens when you click on an order')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_open_detail_window_order_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -29,7 +29,7 @@ class TestOrderFeedPage:
         assert order_feed_page.order_modal_window_is_displayed()
         assert order_feed_page.order_detail_block_is_displayed()
 
-    @allure.title('Проверка заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
+    @allure.title('Checking user order from the section «Order history» are displayed on the page «Order feed»')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_order_id_the_same_for_history_and_feed_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -47,8 +47,7 @@ class TestOrderFeedPage:
         last_order_id_two = order_feed_page.get_order_id()
         assert order_id_from_history_page == last_order_id_two
 
-    @allure.title('Проверка при создании нового заказа счётчик «Выполнено за всё время», «Выполнено за сегодня» '
-                  'увеличивается')
+    @allure.title('Check when creating a new order counter «Completed for all time», «Executed today» increases')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_all_time_counter_completed_increases_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -70,7 +69,7 @@ class TestOrderFeedPage:
         assert after_counter_data['after_alltime_counter'] > before_counter_data['before_alltime_counter']
         assert after_counter_data['after_today_counter'] > before_counter_data['before_today_counter']
 
-    @allure.title('Проверка после оформления заказа его номер появляется в разделе В работе')
+    @allure.title('Checking After an order is placed, its number appears in the In Progress section')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_order_id_shows_in_in_work_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)

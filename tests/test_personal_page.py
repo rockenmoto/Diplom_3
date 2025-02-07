@@ -16,7 +16,7 @@ class TestPersonalPage:
     def setup_method(cls):
         cls.user_data = cls.user.create_new_user()
 
-    @allure.title('Проверка переход в раздел «История заказов»')
+    @allure.title('Check transition to the “Order History” section')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_open_history_order_section_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -30,7 +30,7 @@ class TestPersonalPage:
         personal_page.click_on_history_order_section()
         assert personal_page.get_url() == Urls.order_history_url
 
-    @allure.title('Проверка выход из аккаунта')
+    @allure.title('Checking account logout')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_logout_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)

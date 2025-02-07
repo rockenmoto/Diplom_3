@@ -8,7 +8,7 @@ from pages.main_page import MainPage
 
 
 class TestHeaderPage:
-    @allure.title('Проверка переходов по клику на «Конструктор» и «Историю заказов»')
+    @allure.title('Checking transitions by clicking on «Constructor» and «Order history»')
     @pytest.mark.parametrize("selected_driver, section_locator, expected_result",
                              [('driver_chrome', HeaderPageLocators.order_feed_locator,
                                MainPageLocators.order_feed_title_locator),

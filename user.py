@@ -6,7 +6,7 @@ from urls import Urls
 
 
 class User:
-    @allure.step('Регистрация нового пользователя с возвращением списка данных')
+    @allure.step('New user registration with data list return')
     def create_new_user(self):
         login_pass = []
 
@@ -30,7 +30,7 @@ class User:
 
         return login_pass
 
-    @allure.step('Удаление пользователя')
+    @allure.step('Deleting a user')
     def delete_user(self, user_token):
         headers = {
             'Authorization': user_token,

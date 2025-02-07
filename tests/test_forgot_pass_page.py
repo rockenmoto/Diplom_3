@@ -17,7 +17,7 @@ class TestForgotPassPage:
     def setup_class(cls):
         cls.user_data = cls.user.create_new_user()
 
-    @allure.title('Проверка ввод почты и клик по кнопке «Восстановить»')
+    @allure.title('Check mail input and click on the button «Restore»')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_fill_email_and_click_to_restore_button_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)

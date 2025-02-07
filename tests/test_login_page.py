@@ -8,7 +8,7 @@ from urls import Urls
 
 
 class TestLoginPage:
-    @allure.title('Проверка перехода по клику на «Личный кабинет»')
+    @allure.title('Checking the transition by clicking on «Personal cabinet»')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_open_login_page_from_header_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
@@ -19,7 +19,7 @@ class TestLoginPage:
         assert login_page.get_login_button_text() == 'Войти'
         assert login_page.get_url() == Urls.login_url
 
-    @allure.title('Проверка перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
+    @allure.title('Checking the transition to the password recovery page by pressing the button «Restore password»')
     @pytest.mark.parametrize("selected_driver", ['driver_chrome', 'driver_firefox'])
     def test_open_forgot_pass_page_true(self, request, selected_driver):
         driver = request.getfixturevalue(selected_driver)
